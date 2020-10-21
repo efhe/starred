@@ -1,7 +1,9 @@
 import React, { useCallback } from "react";
 import { List, Skeleton } from "antd";
 import { ForkOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
+import Avatar from "antd/lib/avatar/avatar";
 import { Action } from "./Action";
+
 const { Item } = List;
 
 export interface IRepository {
@@ -10,8 +12,10 @@ export interface IRepository {
   description: string;
   stargazerCount: number;
   forkCount: number;
+  owner: {
+    avatarUrl?: string;
+  };
   url?: string;
-  image?: string;
   starred?: boolean;
 }
 
@@ -26,18 +30,23 @@ export function Repository({
   description,
   stargazerCount,
   forkCount,
+  owner,
   url = "",
-  image = "",
   loading = false,
   starred = false,
   onSetStar,
 }: IRepositoryItem) {
   const handleSetStar = useCallback(() => {
-    onSetStar(id, !starred);
-  }, [onSetStar, id, starred]);
+    // onSetStar(id, !starred);
+  }, []);
+
+  const handleForkRepository = useCallback(() => {
+    // onSetStar(id, !starred);
+  }, []);
 
   return (
     <Item
+      key={id}
       actions={[
         <Action
           label={stargazerCount}
@@ -47,12 +56,16 @@ export function Repository({
         <Action
           label={forkCount}
           renderIcon={() => <ForkOutlined />}
-          onClick={handleSetStar}
+          onClick={handleForkRepository}
         />,
       ]}
     >
       <Skeleton avatar title={false} loading={loading} active>
-        <Item.Meta title={<a href={url}>{name}</a>} description={description} />
+        <Item.Meta
+          avatar={<Avatar src={owner.avatarUrl} />}
+          title={<a href={url}>{name}</a>}
+          description={description}
+        />
       </Skeleton>
     </Item>
   );

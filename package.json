@@ -14,10 +14,14 @@
     "@types/react-dom": "^16.9.0",
     "antd": "^4.7.2",
     "graphql": "^15.3.0",
+    "qs": "^6.9.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "node-fetch": "^2.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +45,8 @@
     ]
   },
   "devDependencies": {
+    "@types/qs": "^6.9.5",
+    "@types/react-router-dom": "^5.1.6",
     "prettier": "^2.1.2"
   }
 }

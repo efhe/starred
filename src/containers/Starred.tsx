@@ -31,7 +31,7 @@ const GET_STARRED_REPOSITORIES = gql`
   }
 `;
 
-function StarredRepositories() {
+function Starred() {
   const [total, setTotal] = useState(0);
   const [variables, setVariables] = useState({ first: 10 });
   const [repositories, setRepositories] = useState<IRepository[]>([]);
@@ -75,14 +75,17 @@ function StarredRepositories() {
   }, [data]);
 
   return (
-    <Repositories
-      data={repositories}
-      total={total}
-      loading={loading}
-      onLoadMore={handleLoadMore}
-      onSetStarred={handleSetStarred}
-    />
+    <>
+      <h1>Starred</h1>
+      <Repositories
+        data={repositories}
+        total={total}
+        loading={loading}
+        onLoadMore={handleLoadMore}
+        onSetStarred={handleSetStarred}
+      />
+    </>
   );
 }
 
-export default StarredRepositories;
+export { Starred };
